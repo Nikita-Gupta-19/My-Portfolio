@@ -310,6 +310,65 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  /* ---------------- certificate modal ---------------- */
+  .cert-modal {
+    display: none;
+    position: fixed;
+    z-index: 20000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(5, 8, 16, 0.95);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+  }
+  .cert-modal.open {
+    display: flex;
+    opacity: 1;
+  }
+  .cert-modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    transform: scale(0.9);
+    transition: transform 0.3s var(--ease);
+  }
+  .cert-modal.open .cert-modal-content {
+    transform: scale(1);
+  }
+  .cert-modal-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: var(--text-mute);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .cert-modal-close:hover {
+    color: var(--amber);
+  }
+  .view-cert {
+    color: var(--amber-soft);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+    margin-left: 4px;
+    font-weight: 500;
+  }
+  .view-cert:hover {
+    color: var(--amber);
+  }
 </style>
 </head>
 <body>
@@ -786,6 +845,9 @@
       <div class="info-card reveal">
         <h3><span class="chip"></span>Achievements</h3>
         <ul>
+          <li><b>Flipkart GRiD 6.0 — Level 1</b>Qualified Level 1 in Software Development Track.<div class="meta">August 2024 — <span class="view-cert" data-cert="certificates/flipkart_grid.png">View Certificate</span></div></li>
+          <li><b>Myntra HackerRamp 2025</b>Qualified Stage 3: The Tech Gauntlet Online Assessment.<div class="meta">October 2025 — <span class="view-cert" data-cert="certificates/myntra_hackerramp.png">View Certificate</span></div></li>
+          <li><b>Adobe India Hackathon</b>Qualified Round 1: Online MCQ Assessment + Coding.<div class="meta">August 2025 — <span class="view-cert" data-cert="certificates/adobe_hackathon.png">View Certificate</span></div></li>
           <li><b>Smart India Hackathon 2024</b>Qualified the internal college round with MedBedCare (project #1620).<div class="meta">SIH 2024</div></li>
           <li><b>500+ DSA problems solved</b>Across LeetCode, CodeChef, Codeforces, and GeeksforGeeks.<div class="meta">Ongoing</div></li>
         </ul>
@@ -793,8 +855,10 @@
       <div class="info-card reveal">
         <h3><span class="chip"></span>Certifications</h3>
         <ul>
-          <li><b>GfG 160 — 160 Days of Problem Solving</b>GeeksforGeeks<div class="meta">June 2025</div></li>
-          <li><b>Deloitte Australia Virtual Job Simulation</b>Forage<div class="meta">June 2025</div></li>
+          <li><b>GfG 160 — 160 Days of Problem Solving</b>GeeksforGeeks course completion.<div class="meta">June 2025 — <span class="view-cert" data-cert="certificates/gfg_160.png">View Certificate</span></div></li>
+          <li><b>CodeSprint CodeClash Excellence</b>Secured 611th rank in the Final Coding Round of CodeClash.<div class="meta">July 2025 — <span class="view-cert" data-cert="certificates/codesprint_excellence.png">View Certificate</span></div></li>
+          <li><b>Deloitte Australia Cyber Simulation</b>Cybersecurity Job Simulation on Forage.<div class="meta">June 2025 — <span class="view-cert" data-cert="certificates/deloitte_cyber.png">View Certificate</span></div></li>
+          <li><b>Data Science Internship</b>Unified Mentor Pvt Ltd 3-month internship completion.<div class="meta">September 2025 — <span class="view-cert" data-cert="certificates/unified_mentor_internship.jpg">View Certificate</span></div></li>
         </ul>
       </div>
     </div>
@@ -864,6 +928,12 @@
     </div>
   </div>
 </footer>
+
+<!-- Certificate Preview Modal -->
+<div id="certModal" class="cert-modal">
+  <span class="cert-modal-close">&times;</span>
+  <img class="cert-modal-content" id="certModalImg" alt="Certificate Preview">
+</div>
 
 <script>
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1107,6 +1177,40 @@
       }
     });
   }
+  /* ---------------- certificate preview modal ---------------- */
+  var certModal = document.getElementById('certModal');
+  var certModalImg = document.getElementById('certModalImg');
+  var certCloseBtn = document.querySelector('.cert-modal-close');
+
+  document.querySelectorAll('.view-cert').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var certSrc = btn.getAttribute('data-cert');
+      certModalImg.src = certSrc;
+      certModal.classList.add('open');
+    });
+  });
+
+  function closeCertModal() {
+    certModal.classList.remove('open');
+    setTimeout(function() {
+      if (!certModal.classList.contains('open')) {
+        certModalImg.src = '';
+      }
+    }, 300);
+  }
+
+  certCloseBtn.addEventListener('click', closeCertModal);
+  certModal.addEventListener('click', function(e) {
+    if (e.target === certModal) {
+      closeCertModal();
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && certModal.classList.contains('open')) {
+      closeCertModal();
+    }
+  });
 </script>
 </body>
 </html>
