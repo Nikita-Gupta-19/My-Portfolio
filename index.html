@@ -260,6 +260,56 @@
   .flow-node.active .flow-node-circle{stroke:var(--amber);filter:drop-shadow(0 0 10px rgba(76,141,255,0.55));}
   .flow-node.active .flow-node-label{fill:var(--amber-soft);}
   .flow-icon{pointer-events:none;}
+
+  /* ---------------- project live demo hover preview ---------------- */
+  .project-preview-popup {
+    position: fixed;
+    width: 320px;
+    height: 200px;
+    background: var(--surface-2);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(76,141,255,0.2);
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .project-preview-popup.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .project-preview-popup iframe {
+    width: 1066px; /* 320px / 0.3 scale */
+    height: 666px; /* 200px / 0.3 scale */
+    transform: scale(0.3);
+    transform-origin: top left;
+    border: none;
+    background: #ffffff;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+  }
+  .project-preview-popup iframe.loaded {
+    opacity: 1;
+  }
+  .project-preview-popup .preview-loader {
+    position: absolute;
+    border: 3px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 </style>
 </head>
 <body>
@@ -997,6 +1047,64 @@
     typeCmd();
   }
   if(!reduceMotion){ typeCycle(); } else { typedLine.textContent = 'whoami'; typedOut.textContent = lines[0].out; }
+
+  /* ---------------- project live demo hover preview popup ---------------- */
+  if (window.matchMedia('(min-width: 881px)').matches) {
+    var previewPopup = document.createElement('div');
+    previewPopup.className = 'project-preview-popup';
+    previewPopup.innerHTML = '<div class="preview-loader"></div><iframe src="about:blank"></iframe>';
+    document.body.appendChild(previewPopup);
+
+    var previewIframe = previewPopup.querySelector('iframe');
+    
+    previewIframe.addEventListener('load', function() {
+      if (previewIframe.src !== 'about:blank' && previewIframe.src !== '') {
+        previewIframe.classList.add('loaded');
+      }
+    });
+
+    document.querySelectorAll('.project-card').forEach(function(card) {
+      var links = card.querySelectorAll('.project-links a');
+      var demoUrl = null;
+      links.forEach(function(link) {
+        if (link.textContent.toLowerCase().includes('live demo') || link.textContent.toLowerCase().includes('demo')) {
+          demoUrl = link.href;
+        }
+      });
+
+      if (demoUrl) {
+        card.addEventListener('mouseenter', function() {
+          previewIframe.classList.remove('loaded');
+          previewIframe.src = demoUrl;
+          previewPopup.classList.add('visible');
+        });
+
+        card.addEventListener('mousemove', function(e) {
+          var x = e.clientX + 20;
+          var y = e.clientY + 20;
+          
+          var pw = previewPopup.offsetWidth;
+          var ph = previewPopup.offsetHeight;
+          
+          if (x + pw > window.innerWidth) {
+            x = e.clientX - pw - 20;
+          }
+          if (y + ph > window.innerHeight) {
+            y = e.clientY - ph - 20;
+          }
+
+          previewPopup.style.left = x + 'px';
+          previewPopup.style.top = y + 'px';
+        });
+
+        card.addEventListener('mouseleave', function() {
+          previewPopup.classList.remove('visible');
+          previewIframe.src = 'about:blank';
+          previewIframe.classList.remove('loaded');
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>
