@@ -56,21 +56,21 @@ Welcome to my personal portfolio repository! I'm a fourth-year Computer Science 
 *AI-Powered Study Assistant*
 - **Description:** An educational platform that leverages Tesseract OCR and Gemini 2.0 Flash to convert handwritten images and PDFs into summaries, active-recall quizzes, and concept maps.
 - **Tech Stack:** React.js, Flask, Google Gemini AI, Tesseract OCR, D3.js, jsPDF, Docker
-- **Repository:** [Scan2Learn GitHub Repo](https://github.com/Nikita-Gupta-19/Scan2Learn)
+- **Repository:** [Scan2Learn GitHub Repo](https://github.com/Nikita-Gupta-19/Scan2Learn_Project)
 - **Live Demo:** [Scan2Learn Live](https://scan2learn-frontend.onrender.com/)
 
 ### 7. **CCTV Retail Analytics System** 🎥
 *Store Intelligence & Customer Behavior Metrics*
 - **Description:** A computer vision platform processing IP CCTV camera streams to track customer count, dwell times, and shelf interactions using YOLOv8 and FastAPI backend heuristics.
 - **Tech Stack:** Next.js, Prisma, FastAPI, SQLite, YOLOv8, PyTorch, Docker
-- **Repository:** [CCTV Retail Analytics Repo](https://github.com/Nikita-Gupta-19/cctv-retail-analytics-system)
+- **Repository:** [CCTV Retail Analytics Repo](https://github.com/Nikita-Gupta-19/AI-Powered-Store-Intelligence-CCTV-Retail-Analytics-System)
 - **Live Demo:** [CCTV Retail Analytics Live](https://cctv-retail-analytics-system.vercel.app)
 
 ### 8. **FarmFresh** 🌾
 *Zero-Dependency Farm-to-Home Marketplace*
 - **Description:** A pure Python agricultural marketplace with buyer and farmer portals, weather widgets, custom session tracking, and a transaction-safe SQLite backend.
 - **Tech Stack:** Python 3 (Standard Libraries), SQLite, HTML, CSS, JavaScript
-- **Repository:** [FarmFresh GitHub Repo](https://github.com/Nikita-Gupta-19/FarmFresh)
+- **Repository:** [FarmFresh GitHub Repo](https://github.com/Nikita-Gupta-19/FarmFresh-Updated)
 - **Live Demo:** [FarmFresh Live](https://farmfresh-44h6.onrender.com/)
 
 ### 9. **TaskFlow** 🔄
@@ -83,7 +83,7 @@ Welcome to my personal portfolio repository! I'm a fourth-year Computer Science 
 *Cognitive Training Web Application*
 - **Description:** Interactive single-page cognitive brain trainer featuring 7 customized mini-games with local storage stats telemetry and streak tracking.
 - **Tech Stack:** HTML, CSS, JavaScript, LocalStorage
-- **Repository:** [Gamify GitHub Repo](https://github.com/Nikita-Gupta-19/gamify)
+- **Repository:** [Gamify GitHub Repo](https://github.com/Nikita-Gupta-19/Gamify)
 - **Live Demo:** [Gamify Live](https://gamify-brain-games.netlify.app/)
 
 ### 11. **ShopScape** 🛍️
@@ -96,7 +96,7 @@ Welcome to my personal portfolio repository! I'm a fourth-year Computer Science 
 *Dynamic Weather Dashboard*
 - **Description:** Responsive weather forecaster showcasing real-time condition tracking, favorites, search history caching, and dynamic background layouts.
 - **Tech Stack:** HTML, CSS, JavaScript, OpenWeatherMap API
-- **Repository:** [Weather Forecast Repo](https://github.com/Nikita-Gupta-19)
+- **Repository:** [Weather Forecast Repo](https://github.com/Nikita-Gupta-19/Weather-Forecast-App)
 
 ---
 
