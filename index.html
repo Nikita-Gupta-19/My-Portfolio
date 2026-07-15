@@ -162,24 +162,26 @@
   .tl-item ul{margin:0;padding-left:20px;color:var(--text-mute);font-size:0.96rem;}
   .tl-item li{margin-bottom:6px;}
 
-  .project-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;margin-bottom:22px;transition:transform .3s var(--ease), border-color .3s;}
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;}
+  .project-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:transform .3s var(--ease), border-color .3s;height:100%;}
   .project-card:hover{border-color:var(--line-strong);}
-  .project-top{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:start;}
-  .project-num{font-family:'Fraunces',serif;font-style:italic;font-size:2.2rem;color:var(--text-faint);line-height:1;}
-  .project-body h3{font-size:1.3rem;margin-bottom:8px;}
-  .project-body p{color:var(--text-mute);margin:0 0 14px;font-size:0.98rem;}
-  .project-links{display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
-  .project-links a{font-size:0.85rem;font-weight:600;color:var(--amber-soft)!important;display:flex;align-items:center;gap:6px;white-space:nowrap;}
+  .project-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .project-num{font-family:'Fraunces',serif;font-style:italic;font-size:1.8rem;color:var(--text-faint);line-height:1;}
+  .project-links{display:flex;gap:12px;align-items:center;}
+  .project-links a{font-size:0.82rem;font-weight:600;color:var(--amber-soft)!important;white-space:nowrap;}
   .project-links a:hover{text-decoration:underline;}
-  .unfold-btn{margin-top:18px;background:none;border:1px solid var(--line);color:var(--text-mute);font-family:'IBM Plex Mono',monospace;font-size:0.78rem;padding:8px 16px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s, color .2s;cursor:pointer;}
+  .project-body{flex-grow:1;display:flex;flex-direction:column;margin-bottom:14px;}
+  .project-body h3{font-size:1.2rem;margin-bottom:8px;}
+  .project-body p{color:var(--text-mute);margin:0 0 16px;font-size:0.92rem;line-height:1.5;flex-grow:1;}
+  .unfold-btn{align-self:flex-start;background:none;border:1px solid var(--line);color:var(--text-mute);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;padding:7px 14px;border-radius:100px;display:inline-flex;align-items:center;gap:6px;transition:border-color .2s, color .2s;cursor:pointer;}
   .unfold-btn:hover{border-color:var(--amber);color:var(--amber-soft);}
   .unfold-btn .chev{transition:transform .35s var(--ease);}
   .project-card.open .unfold-btn .chev{transform:rotate(180deg);}
   .case-study{max-height:0;overflow:hidden;transition:max-height .5s var(--ease), opacity .4s, margin-top .5s var(--ease);opacity:0;margin-top:0;}
-  .project-card.open .case-study{max-height:400px;opacity:1;margin-top:18px;}
-  .case-study-inner{border-top:1px solid var(--line);padding-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .case-study-inner .cs-block b{display:block;font-size:0.78rem;font-family:'IBM Plex Mono',monospace;color:var(--teal-soft);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}
-  .case-study-inner .cs-block span{font-size:0.9rem;color:var(--text-mute);}
+  .project-card.open .case-study{max-height:500px;opacity:1;margin-top:16px;}
+  .case-study-inner{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:12px;}
+  .case-study-inner .cs-block b{display:block;font-size:0.74rem;font-family:'IBM Plex Mono',monospace;color:var(--teal-soft);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
+  .case-study-inner .cs-block span{font-size:0.85rem;color:var(--text-mute);line-height:1.4;}
 
   .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   .info-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
@@ -220,14 +222,12 @@
     .profiles-row{grid-template-columns:1fr 1fr;}
     .contact-grid{grid-template-columns:1fr;}
     nav.links{display:none;}
-    .project-top{grid-template-columns:1fr;}
-    .project-links{align-items:flex-start;}
-    .project-num{display:none;}
-    .case-study-inner{grid-template-columns:1fr;}
+    .projects-grid{grid-template-columns:1fr 1fr;}
   }
   @media (max-width:560px){
     .skills-grid{grid-template-columns:1fr;}
     .profiles-row{grid-template-columns:1fr 1fr;}
+    .projects-grid{grid-template-columns:1fr;}
     .hero-stats{gap:22px;}
   }
   @media (prefers-reduced-motion: reduce){
@@ -417,297 +417,299 @@
       <p>Each one was a chance to get comfortable with a piece of backend engineering I hadn't fully earned yet — transactions, locking, RAG pipelines, schema design.</p>
     </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">01</div>
+    <div class="projects-grid">
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">01</div>
+          <div class="project-links">
+            <a href="https://querymind-web.onrender.com/" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/QueryMind" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>QueryMind</h3>
           <p>An AI-powered analytics platform that converts natural language into production-safe SQL, using RAG-based schema retrieval, SQL validation, and feedback-driven query optimization.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">Redis</span><span class="tag">BullMQ</span><span class="tag">Docker</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://querymind-web.onrender.com/" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/QueryMind" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Retrieval</b><span>Schema chunks embedded with pgvector so the model only sees tables relevant to the question.</span></div>
-          <div class="cs-block"><b>Safety</b><span>Generated SQL is validated before execution so it can't touch data outside the query's intent.</span></div>
-          <div class="cs-block"><b>Feedback loop</b><span>Redis + BullMQ queue re-ranks and improves queries based on past corrections.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Retrieval</b><span>Schema chunks embedded with pgvector so the model only sees tables relevant to the question.</span></div>
+            <div class="cs-block"><b>Safety</b><span>Generated SQL is validated before execution so it can't touch data outside the query's intent.</span></div>
+            <div class="cs-block"><b>Feedback loop</b><span>Redis + BullMQ queue re-ranks and improves queries based on past corrections.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">02</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">02</div>
+          <div class="project-links">
+            <a href="https://github.com/Nikita-Gupta-19/Paid-Media-Locker" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>Paid Media Locker</h3>
           <p>A secure content monetization platform with JWT authentication, PostgreSQL transactions, S3-based storage, and row-level locking to prevent race conditions on purchase flows.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span><span class="tag">Docker</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/Nikita-Gupta-19/Paid-Media-Locker" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Access control</b><span>JWT-based auth gates every content route before a signed S3 URL is ever issued.</span></div>
-          <div class="cs-block"><b>Concurrency</b><span>Row-level locks on purchase records stop two simultaneous buys from double-charging.</span></div>
-          <div class="cs-block"><b>Storage</b><span>Media sits in S3, with PostgreSQL only tracking ownership and entitlement.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Access control</b><span>JWT-based auth gates every content route before a signed S3 URL is ever issued.</span></div>
+            <div class="cs-block"><b>Concurrency</b><span>Row-level locks on purchase records stop two simultaneous buys from double-charging.</span></div>
+            <div class="cs-block"><b>Storage</b><span>Media sits in S3, with PostgreSQL only tracking ownership and entitlement.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">03</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">03</div>
+          <div class="project-links">
+            <a href="https://github.com/Nikita-Gupta-19/candidate-transformer" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>Candidate Data Transformer</h3>
           <p>A deterministic data transformation pipeline using graph-based identity matching, schema validation, and configurable runtime projections to unify candidate data into one canonical schema.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">Python</span><span class="tag">Pydantic</span><span class="tag">pytest</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/Nikita-Gupta-19/candidate-transformer" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Identity matching</b><span>Builds a graph across records to resolve which entries refer to the same candidate.</span></div>
-          <div class="cs-block"><b>Validation</b><span>Pydantic schemas reject malformed records before they reach the canonical store.</span></div>
-          <div class="cs-block"><b>Testing</b><span>pytest suite locks in deterministic output for every transformation rule.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Identity matching</b><span>Builds a graph across records to resolve which entries refer to the same candidate.</span></div>
+            <div class="cs-block"><b>Validation</b><span>Pydantic schemas reject malformed records before they reach the canonical store.</span></div>
+            <div class="cs-block"><b>Testing</b><span>pytest suite locks in deterministic output for every transformation rule.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">04</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">04</div>
+          <div class="project-links">
+            <a href="https://quiz-pulse-roan.vercel.app/" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/QuizPulse" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>QuizPulse</h3>
           <p>A WhatsApp-inspired micro-learning quiz platform featuring recruiter-level SaaS telemetry and real-time live leaderboards.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">Next.js 15</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Zustand</span><span class="tag">FastAPI</span><span class="tag">MongoDB</span><span class="tag">WebSockets</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://quiz-pulse-roan.vercel.app/" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/QuizPulse" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Telemetry</b><span>Optimized MongoDB aggregation pipelines tracking DAU/WAU, drop-off rates, and peak hour trends.</span></div>
-          <div class="cs-block"><b>Real-Time</b><span>WebSockets broadcasting active leaderboard changes to all live sessions upon quiz completion.</span></div>
-          <div class="cs-block"><b>State</b><span>Zustand store with local auto-saving, allowing seamless quiz session resumes upon reload.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Telemetry</b><span>Optimized MongoDB aggregation pipelines tracking DAU/WAU, drop-off rates, and peak hour trends.</span></div>
+            <div class="cs-block"><b>Real-Time</b><span>WebSockets broadcasting active leaderboard changes to all live sessions upon quiz completion.</span></div>
+            <div class="cs-block"><b>State</b><span>Zustand store with local auto-saving, allowing seamless quiz session resumes upon reload.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">05</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">05</div>
+          <div class="project-links">
+            <a href="https://react-project-228a5.web.app" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/HealthSync-backend" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>HealthSync</h3>
           <p>A comprehensive AI-powered patient health tracker featuring automated vital logging, disease prediction, and medical report parsing.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">React.js</span><span class="tag">Firebase</span><span class="tag">Chart.js</span><span class="tag">Flask</span><span class="tag">Scikit-Learn</span><span class="tag">PyTesseract</span><span class="tag">Gemini AI</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://react-project-228a5.web.app" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/HealthSync-backend" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Prediction</b><span>Local Random Forest Classifier predicting diseases from 130+ symptoms, combined with Gemini text parsing.</span></div>
-          <div class="cs-block"><b>Report Analysis</b><span>PyTesseract OCR and PyPDF2 extracting text from uploaded PDFs/images, with Gemini providing diet/lifestyle advice.</span></div>
-          <div class="cs-block"><b>Security</b><span>Integrated two-factor authentication (2FA) with TOTP/QR codes stored securely in Firestore.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Prediction</b><span>Local Random Forest Classifier predicting diseases from 130+ symptoms, combined with Gemini text parsing.</span></div>
+            <div class="cs-block"><b>Report Analysis</b><span>PyTesseract OCR and PyPDF2 extracting text from uploaded PDFs/images, with Gemini providing diet/lifestyle advice.</span></div>
+            <div class="cs-block"><b>Security</b><span>Integrated two-factor authentication (2FA) with TOTP/QR codes stored securely in Firestore.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">06</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">06</div>
+          <div class="project-links">
+            <a href="https://scan2learn-frontend.onrender.com/" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/Scan2Learn" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>Scan2Learn</h3>
           <p>An educational assistant that transforms raw images and PDFs of notes into structured summaries, active-recall quizzes, and concept maps.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">React.js</span><span class="tag">Flask</span><span class="tag">Google Gemini</span><span class="tag">Tesseract OCR</span><span class="tag">D3.js</span><span class="tag">jsPDF</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://scan2learn-frontend.onrender.com/" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/Scan2Learn" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Extraction</b><span>Dual Hindi/English text extraction using Tesseract OCR and PyMuPDF PDF parsing.</span></div>
-          <div class="cs-block"><b>Active Recall</b><span>Automated generation of MCQ quizzes and flashcards dynamically matched to chosen difficulty levels.</span></div>
-          <div class="cs-block"><b>Visualization</b><span>Hierarchical concept mind maps generated dynamically using SVG and D3.js rendering.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Extraction</b><span>Dual Hindi/English text extraction using Tesseract OCR and PyMuPDF PDF parsing.</span></div>
+            <div class="cs-block"><b>Active Recall</b><span>Automated generation of MCQ quizzes and flashcards dynamically matched to chosen difficulty levels.</span></div>
+            <div class="cs-block"><b>Visualization</b><span>Hierarchical concept mind maps generated dynamically using SVG and D3.js rendering.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">07</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">07</div>
+          <div class="project-links">
+            <a href="https://cctv-retail-analytics-system.vercel.app" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/cctv-retail-analytics-system" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>CCTV Retail Analytics System</h3>
           <p>A computer vision retail intelligence dashboard that processes raw CCTV feeds into customer dwell times, pathing metrics, and checkout events.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">Next.js</span><span class="tag">Prisma</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">YOLOv8</span><span class="tag">PyTorch</span><span class="tag">Docker</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://cctv-retail-analytics-system.vercel.app" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/cctv-retail-analytics-system" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Vision Pipeline</b><span>YOLOv8 object tracking combined with temporal keyframe sampling to cut processing overhead by 85%.</span></div>
-          <div class="cs-block"><b>Heuristics</b><span>Spatial geometry tripwires for footfall counting and Euclidean distance clustering to avoid duplicate counts.</span></div>
-          <div class="cs-block"><b>Staff Filtering</b><span>Temporal persistence checks (>70% of frames) to filter out floor associates from customer metrics.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Vision Pipeline</b><span>YOLOv8 object tracking combined with temporal keyframe sampling to cut processing overhead by 85%.</span></div>
+            <div class="cs-block"><b>Heuristics</b><span>Spatial geometry tripwires for footfall counting and Euclidean distance clustering to avoid duplicate counts.</span></div>
+            <div class="cs-block"><b>Staff Filtering</b><span>Temporal persistence checks (>70% of frames) to filter out floor associates from customer metrics.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">08</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">08</div>
+          <div class="project-links">
+            <a href="https://farmfresh-44h6.onrender.com/" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/FarmFresh" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>FarmFresh</h3>
           <p>A zero-dependency agricultural marketplace connecting verified local farmers directly with buyers, built entirely in pure Python.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">Python 3</span><span class="tag">SQLite</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://farmfresh-44h6.onrender.com/" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/FarmFresh" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Zero Dependency</b><span>Built using only Python 3 standard libraries (like http.server and sqlite3), requiring zero external packages.</span></div>
-          <div class="cs-block"><b>Transactional</b><span>Concurrency-safe SQLite WAL-mode implementation protecting checkout quantity and stock updates.</span></div>
-          <div class="cs-block"><b>Security</b><span>Custom session-handling, HTML escaping to prevent XSS, and PBKDF2-HMAC-SHA256 password hashing.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Zero Dependency</b><span>Built using only Python 3 standard libraries (like http.server and sqlite3), requiring zero external packages.</span></div>
+            <div class="cs-block"><b>Transactional</b><span>Concurrency-safe SQLite WAL-mode implementation protecting checkout quantity and stock updates.</span></div>
+            <div class="cs-block"><b>Security</b><span>Custom session-handling, HTML escaping to prevent XSS, and PBKDF2-HMAC-SHA256 password hashing.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">09</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">09</div>
+          <div class="project-links">
+            <a href="https://github.com/Nikita-Gupta-19/TaskFlow" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>TaskFlow</h3>
           <p>A full-stack project and task management app featuring OTP-based passwordless authentication, optimistic updates, and haptic feedback.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">React Native (Expo)</span><span class="tag">Redux Toolkit</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">JWT</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/Nikita-Gupta-19/TaskFlow" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>State Management</b><span>Redux Toolkit combined with Redux Thunk to manage optimistic updates on project and task CRUD operations.</span></div>
-          <div class="cs-block"><b>Passwordless Auth</b><span>Secure session persistence using JWT paired with local console-logged OTP verification.</span></div>
-          <div class="cs-block"><b>UX & Haptics</b><span>Polished micro-interactions including staggered list entry animations, skeleton loaders, and haptics.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>State Management</b><span>Redux Toolkit combined with Redux Thunk to manage optimistic updates on project and task CRUD operations.</span></div>
+            <div class="cs-block"><b>Passwordless Auth</b><span>Secure session persistence using JWT paired with local console-logged OTP verification.</span></div>
+            <div class="cs-block"><b>UX & Haptics</b><span>Polished micro-interactions including staggered list entry animations, skeleton loaders, and haptics.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">10</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">10</div>
+          <div class="project-links">
+            <a href="https://gamify-brain-games.netlify.app/" target="_blank" rel="noopener">Live demo →</a>
+            <a href="https://github.com/Nikita-Gupta-19/gamify" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>Gamify</h3>
           <p>A modern, interactive browser-based cognitive training application containing multiple brain-training mini-games.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">LocalStorage</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://gamify-brain-games.netlify.app/" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Nikita-Gupta-19/gamify" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Mini Games</b><span>Built 7 distinct logic engines including reaction timers, memory pattern tests, typing speed, and asteroid dodging.</span></div>
-          <div class="cs-block"><b>Telemetry</b><span>Live scoreboard tracking, cognitive streaks, and score telemetry persisted locally using browser LocalStorage.</span></div>
-          <div class="cs-block"><b>Interactive Loop</b><span>Smooth 60fps animations and transitions using hardware-accelerated CSS and canvas requestAnimationFrame.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Mini Games</b><span>Built 7 distinct logic engines including reaction timers, memory pattern tests, typing speed, and asteroid dodging.</span></div>
+            <div class="cs-block"><b>Telemetry</b><span>Live scoreboard tracking, cognitive streaks, and score telemetry persisted locally using browser LocalStorage.</span></div>
+            <div class="cs-block"><b>Interactive Loop</b><span>Smooth 60fps animations and transitions using hardware-accelerated CSS and canvas requestAnimationFrame.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">11</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">11</div>
+          <div class="project-links">
+            <a href="https://github.com/Nikita-Gupta-19/ShopScape" target="_blank" rel="noopener">GitHub repo →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>ShopScape</h3>
           <p>A comprehensive fashion e-commerce site featuring session-managed user authentication, dynamic product inventory, and Razorpay demo integration.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">XAMPP</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/Nikita-Gupta-19/ShopScape" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Relational DB</b><span>Normalized relational database schema in MySQL mapping users, orders, categories, and inventory items.</span></div>
-          <div class="cs-block"><b>Session Auth</b><span>Secure PHP session-based user authentication gatekeeping cart management and checkout.</span></div>
-          <div class="cs-block"><b>Interactive UI</b><span>Dynamic product details with hover-triggered second image swaps, custom pop-up alerts, and toasts.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Relational DB</b><span>Normalized relational database schema in MySQL mapping users, orders, categories, and inventory items.</span></div>
+            <div class="cs-block"><b>Session Auth</b><span>Secure PHP session-based user authentication gatekeeping cart management and checkout.</span></div>
+            <div class="cs-block"><b>Interactive UI</b><span>Dynamic product details with hover-triggered second image swaps, custom pop-up alerts, and toasts.</span></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project-card reveal" data-project>
-      <div class="project-top">
-        <div class="project-num">12</div>
+      <div class="project-card reveal" data-project>
+        <div class="project-header">
+          <div class="project-num">12</div>
+          <div class="project-links">
+            <a href="https://github.com/Nikita-Gupta-19" target="_blank" rel="noopener">GitHub Profile →</a>
+          </div>
+        </div>
         <div class="project-body">
           <h3>Weather Forecast App</h3>
           <p>A sleek weather dashboard providing real-time conditions and a 5-day forecast with a dynamically adapting UI based on weather codes.</p>
           <div class="tag-row" style="max-height:none;opacity:1;overflow:visible;margin-top:0;">
             <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">OpenWeatherMap API</span>
           </div>
-          <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/Nikita-Gupta-19" target="_blank" rel="noopener">GitHub Profile →</a>
-        </div>
-      </div>
-      <div class="case-study">
-        <div class="case-study-inner">
-          <div class="cs-block"><b>Dynamic Theme</b><span>Custom background gradients and SVG weather icons that dynamically adapt based on real-time weather codes.</span></div>
-          <div class="cs-block"><b>Favorites Storage</b><span>Seamless favorite-city bookmarks and recent searches persisted locally on the client-side.</span></div>
-          <div class="cs-block"><b>Horizontal Scroll</b><span>Responsive horizontal scrolling forecast layout built using modern CSS flexbox and touch-friendly controls.</span></div>
+        <button class="unfold-btn" data-toggle>How it works <span class="chev">⌄</span></button>
+        <div class="case-study">
+          <div class="case-study-inner">
+            <div class="cs-block"><b>Dynamic Theme</b><span>Custom background gradients and SVG weather icons that dynamically adapt based on real-time weather codes.</span></div>
+            <div class="cs-block"><b>Favorites Storage</b><span>Seamless favorite-city bookmarks and recent searches persisted locally on the client-side.</span></div>
+            <div class="cs-block"><b>Horizontal Scroll</b><span>Responsive horizontal scrolling forecast layout built using modern CSS flexbox and touch-friendly controls.</span></div>
+          </div>
         </div>
       </div>
     </div>
