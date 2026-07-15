@@ -1,6 +1,6 @@
 # 💻 Nikita Gupta — Personal Portfolio
 
-Welcome to my personal portfolio repository! I'm a third-year Computer Science undergraduate at **JIIT Noida** (Class of 2027) focused on building scalable, reliable backend systems and solving complex algorithmic problems.
+Welcome to my personal portfolio repository! I'm a fourth-year Computer Science undergraduate at **JIIT Noida** (Class of 2027) focused on building scalable, reliable backend systems and solving complex algorithmic problems.
 
 🚀 **Live Link:** [https://nikita-gupta-19.github.io/My-Portfolio/](https://nikita-gupta-19.github.io/My-Portfolio/)
 
