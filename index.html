@@ -291,8 +291,11 @@
     opacity: 0;
     transition: opacity 0.3s var(--ease);
   }
-  .project-preview-popup img.loaded {
+  .project-preview-popup.loaded img {
     opacity: 1;
+  }
+  .project-preview-popup.loaded .preview-loader {
+    display: none;
   }
   .project-preview-popup .preview-loader {
     position: absolute;
@@ -1057,7 +1060,7 @@
     
     previewImg.addEventListener('load', function() {
       if (previewImg.src !== '' && !previewImg.src.includes('about:blank')) {
-        previewImg.classList.add('loaded');
+        previewPopup.classList.add('loaded');
       }
     });
 
@@ -1072,7 +1075,7 @@
 
       if (demoUrl) {
         card.addEventListener('mouseenter', function() {
-          previewImg.classList.remove('loaded');
+          previewPopup.classList.remove('loaded');
           // Using a fast, free screenshot API to get a visual preview
           previewImg.src = 'https://image.thum.io/get/width/600/crop/800/' + demoUrl;
           previewPopup.classList.add('visible');
@@ -1099,7 +1102,7 @@
         card.addEventListener('mouseleave', function() {
           previewPopup.classList.remove('visible');
           previewImg.src = '';
-          previewImg.classList.remove('loaded');
+          previewPopup.classList.remove('loaded');
         });
       }
     });
