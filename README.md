@@ -73,6 +73,31 @@ Welcome to my personal portfolio repository! I'm a third-year Computer Science u
 - **Repository:** [FarmFresh GitHub Repo](https://github.com/Nikita-Gupta-19/FarmFresh)
 - **Live Demo:** [FarmFresh Live](https://farmfresh-44h6.onrender.com/)
 
+### 9. **TaskFlow** 🔄
+*Full-Stack Project & Task Management App*
+- **Description:** Mobile task manager featuring OTP passwordless authentication, JWT session persistence, and client-side optimistic UI updates.
+- **Tech Stack:** React Native (Expo), Redux Toolkit, Node.js, Express, PostgreSQL, JWT
+- **Repository:** [TaskFlow GitHub Repo](https://github.com/Nikita-Gupta-19/TaskFlow)
+
+### 10. **Gamify** 🎮
+*Cognitive Training Web Application*
+- **Description:** Interactive single-page cognitive brain trainer featuring 7 customized mini-games with local storage stats telemetry and streak tracking.
+- **Tech Stack:** HTML, CSS, JavaScript, LocalStorage
+- **Repository:** [Gamify GitHub Repo](https://github.com/Nikita-Gupta-19/gamify)
+- **Live Demo:** [Gamify Live](https://gamify-brain-games.netlify.app/)
+
+### 11. **ShopScape** 🛍️
+*Full-Stack E-Commerce Fashion Platform*
+- **Description:** Dynamic e-commerce platform with session management, category filtering, cart logic, and Razorpay payment integration.
+- **Tech Stack:** HTML, CSS, JavaScript, PHP, MySQL, XAMPP
+- **Repository:** [ShopScape GitHub Repo](https://github.com/Nikita-Gupta-19/ShopScape)
+
+### 12. **Weather Forecast App** ⛅
+*Dynamic Weather Dashboard*
+- **Description:** Responsive weather forecaster showcasing real-time condition tracking, favorites, search history caching, and dynamic background layouts.
+- **Tech Stack:** HTML, CSS, JavaScript, OpenWeatherMap API
+- **Repository:** [Weather Forecast Repo](https://github.com/Nikita-Gupta-19)
+
 ---
 
 ## 💼 Experience
