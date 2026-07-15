@@ -38,6 +38,41 @@ Welcome to my personal portfolio repository! I'm a third-year Computer Science u
 - **Tech Stack:** Python, Pydantic, pytest
 - **Repository:** [Candidate Data Transformer GitHub Repo](https://github.com/Nikita-Gupta-19/candidate-transformer)
 
+### 4. **QuizPulse** 📈
+*WhatsApp-Inspired Micro-Learning & Analytics Platform*
+- **Description:** A gamified micro-learning platform with recruiter-level telemetry dashboard powered by complex MongoDB aggregation pipelines and real-time live WebSocket leaderboards.
+- **Tech Stack:** Next.js 15, TypeScript, Zustand, Tailwind CSS, FastAPI, MongoDB (Motor), WebSockets
+- **Repository:** [QuizPulse GitHub Repo](https://github.com/Nikita-Gupta-19/QuizPulse)
+- **Live Demo:** [QuizPulse Live](https://quiz-pulse-roan.vercel.app/)
+
+### 5. **HealthSync** 🩺
+*Patient Health Tracker & AI Assistant*
+- **Description:** Full-stack AI health platform featuring automated habit tracking, custom 2FA, locally run disease prediction models, and PDF/image medical report OCR parsing with Gemini AI.
+- **Tech Stack:** React.js, Firebase Auth/Firestore, Chart.js, Flask, Scikit-Learn, PyTesseract, Google Gemini, Docker
+- **Repository:** [HealthSync-backend GitHub Repo](https://github.com/Nikita-Gupta-19/HealthSync-backend)
+- **Live Demo:** [HealthSync Live](https://react-project-228a5.web.app)
+
+### 6. **Scan2Learn** 📚
+*AI-Powered Study Assistant*
+- **Description:** An educational platform that leverages Tesseract OCR and Gemini 2.0 Flash to convert handwritten images and PDFs into summaries, active-recall quizzes, and concept maps.
+- **Tech Stack:** React.js, Flask, Google Gemini AI, Tesseract OCR, D3.js, jsPDF, Docker
+- **Repository:** [Scan2Learn GitHub Repo](https://github.com/Nikita-Gupta-19/Scan2Learn)
+- **Live Demo:** [Scan2Learn Live](https://scan2learn-frontend.onrender.com/)
+
+### 7. **CCTV Retail Analytics System** 🎥
+*Store Intelligence & Customer Behavior Metrics*
+- **Description:** A computer vision platform processing IP CCTV camera streams to track customer count, dwell times, and shelf interactions using YOLOv8 and FastAPI backend heuristics.
+- **Tech Stack:** Next.js, Prisma, FastAPI, SQLite, YOLOv8, PyTorch, Docker
+- **Repository:** [CCTV Retail Analytics Repo](https://github.com/Nikita-Gupta-19/cctv-retail-analytics-system)
+- **Live Demo:** [CCTV Retail Analytics Live](https://cctv-retail-analytics-system.vercel.app)
+
+### 8. **FarmFresh** 🌾
+*Zero-Dependency Farm-to-Home Marketplace*
+- **Description:** A pure Python agricultural marketplace with buyer and farmer portals, weather widgets, custom session tracking, and a transaction-safe SQLite backend.
+- **Tech Stack:** Python 3 (Standard Libraries), SQLite, HTML, CSS, JavaScript
+- **Repository:** [FarmFresh GitHub Repo](https://github.com/Nikita-Gupta-19/FarmFresh)
+- **Live Demo:** [FarmFresh Live](https://farmfresh-44h6.onrender.com/)
+
 ---
 
 ## 💼 Experience
