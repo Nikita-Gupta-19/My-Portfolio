@@ -194,13 +194,48 @@
 
   .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   .info-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
-  .info-card h3{font-size:1.1rem;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .info-card h3{font-size:1.1rem;margin-bottom:22px;display:flex;align-items:center;gap:10px;font-weight:700;}
   .info-card h3 .chip{width:8px;height:8px;border-radius:50%;background:var(--teal);}
-  .info-card ul{margin:0;padding:0;list-style:none;}
-  .info-card li{padding:14px 0;border-bottom:1px solid var(--line);font-size:0.94rem;color:var(--text-mute);}
-  .info-card li:last-child{border-bottom:none;padding-bottom:0;}
-  .info-card li b{color:var(--text);display:block;font-weight:600;margin-bottom:2px;}
-  .info-card li .meta{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--text-faint);}
+  .info-card.certifications-card h3 .chip{background:var(--amber);}
+  .info-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .info-card li{
+    position:relative;
+    padding:14px 16px;
+    margin:0 -16px;
+    border-radius:10px;
+    font-size:0.88rem;
+    color:var(--text-mute);
+    line-height:1.5;
+    transition:background 0.25s var(--ease), padding-left 0.25s var(--ease);
+  }
+  .info-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 3px;
+    opacity: 0;
+    border-radius: 4px;
+    transition: opacity 0.25s, transform 0.25s;
+    transform: scaleY(0.7);
+  }
+  .info-card.achievements-card li::before {
+    background: var(--teal);
+  }
+  .info-card.certifications-card li::before {
+    background: var(--amber);
+  }
+  .info-card li:hover {
+    background: rgba(234, 240, 251, 0.03);
+    padding-left: 24px;
+  }
+  .info-card li:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  .info-card li b{color:var(--text);display:block;font-weight:600;margin-bottom:4px;font-size:0.96rem;}
+  .info-card li .meta{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text-faint);margin-top:6px;display:flex;align-items:center;flex-wrap:wrap;}
 
   .profiles-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
   .profile-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;transition:transform .3s var(--ease), border-color .3s;}
@@ -362,13 +397,27 @@
   .view-cert {
     color: var(--amber-soft);
     cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.2s;
-    margin-left: 4px;
-    font-weight: 500;
+    transition: color 0.2s, background-color 0.2s;
+    margin-left: 6px;
+    font-weight: 600;
+    background: rgba(255, 191, 0, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    display: inline-block;
+    vertical-align: middle;
   }
   .view-cert:hover {
-    color: var(--amber);
+    color: #fff;
+    background: var(--amber);
+  }
+  .achievements-card .view-cert {
+    color: var(--teal-soft);
+    background: rgba(76, 175, 80, 0.08);
+  }
+  .achievements-card .view-cert:hover {
+    color: #fff;
+    background: var(--teal);
   }
 </style>
 </head>
@@ -808,7 +857,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-project>
+      <div class="project-card reveal" data-project data-preview="certificates/weather_preview.png">
         <div class="project-header">
           <div class="project-num">12</div>
           <div class="project-links">
@@ -843,7 +892,7 @@
       <h2>Proof of the work.</h2>
     </div>
     <div class="split-grid">
-      <div class="info-card reveal">
+      <div class="info-card achievements-card reveal">
         <h3><span class="chip"></span>Achievements</h3>
         <ul>
           <li><b>Flipkart GRiD 6.0 — Level 1</b>Qualified Level 1 in Software Development Track.<div class="meta">August 2024 — <span class="view-cert" data-cert="certificates/flipkart_grid.png">View Certificate</span></div></li>
@@ -853,7 +902,7 @@
           <li><b>500+ DSA problems solved</b>Across LeetCode, CodeChef, Codeforces, and GeeksforGeeks.<div class="meta">Ongoing</div></li>
         </ul>
       </div>
-      <div class="info-card reveal">
+      <div class="info-card certifications-card reveal">
         <h3><span class="chip"></span>Certifications</h3>
         <ul>
           <li><b>GfG 160 — 160 Days of Problem Solving</b>GeeksforGeeks course completion.<div class="meta">June 2025 — <span class="view-cert" data-cert="certificates/gfg_160.png">View Certificate</span></div></li>
@@ -1156,11 +1205,15 @@
         }
       });
 
-      if (demoUrl) {
+      if (demoUrl || card.getAttribute('data-preview')) {
         card.addEventListener('mouseenter', function() {
           previewPopup.classList.remove('loaded');
-          // Using a fast, free screenshot API to get a visual preview
-          previewImg.src = 'https://image.thum.io/get/width/600/crop/800/' + demoUrl;
+          var localPreview = card.getAttribute('data-preview');
+          if (localPreview) {
+            previewImg.src = localPreview;
+          } else {
+            previewImg.src = 'https://image.thum.io/get/width/600/crop/800/' + demoUrl;
+          }
           previewPopup.classList.add('visible');
         });
 
