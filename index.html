@@ -284,17 +284,14 @@
     opacity: 1;
     transform: scale(1);
   }
-  .project-preview-popup iframe {
-    width: 1066px; /* 320px / 0.3 scale */
-    height: 666px; /* 200px / 0.3 scale */
-    transform: scale(0.3);
-    transform-origin: top left;
-    border: none;
-    background: #ffffff;
+  .project-preview-popup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     opacity: 0;
     transition: opacity 0.3s var(--ease);
   }
-  .project-preview-popup iframe.loaded {
+  .project-preview-popup img.loaded {
     opacity: 1;
   }
   .project-preview-popup .preview-loader {
@@ -1052,14 +1049,14 @@
   if (window.matchMedia('(min-width: 881px)').matches) {
     var previewPopup = document.createElement('div');
     previewPopup.className = 'project-preview-popup';
-    previewPopup.innerHTML = '<div class="preview-loader"></div><iframe src="about:blank"></iframe>';
+    previewPopup.innerHTML = '<div class="preview-loader"></div><img src="" alt="Project Preview">';
     document.body.appendChild(previewPopup);
 
-    var previewIframe = previewPopup.querySelector('iframe');
+    var previewImg = previewPopup.querySelector('img');
     
-    previewIframe.addEventListener('load', function() {
-      if (previewIframe.src !== 'about:blank' && previewIframe.src !== '') {
-        previewIframe.classList.add('loaded');
+    previewImg.addEventListener('load', function() {
+      if (previewImg.src !== '' && !previewImg.src.includes('about:blank')) {
+        previewImg.classList.add('loaded');
       }
     });
 
@@ -1074,8 +1071,9 @@
 
       if (demoUrl) {
         card.addEventListener('mouseenter', function() {
-          previewIframe.classList.remove('loaded');
-          previewIframe.src = demoUrl;
+          previewImg.classList.remove('loaded');
+          // Using a fast, free screenshot API to get a visual preview
+          previewImg.src = 'https://image.thum.io/get/width/600/crop/800/' + demoUrl;
           previewPopup.classList.add('visible');
         });
 
@@ -1099,8 +1097,8 @@
 
         card.addEventListener('mouseleave', function() {
           previewPopup.classList.remove('visible');
-          previewIframe.src = 'about:blank';
-          previewIframe.classList.remove('loaded');
+          previewImg.src = '';
+          previewImg.classList.remove('loaded');
         });
       }
     });
