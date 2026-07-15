@@ -97,9 +97,9 @@
   .btn-primary{background:var(--amber);color:#fff!important;box-shadow:0 16px 40px -14px rgba(76,141,255,0.6);}
   .btn-ghost{border:1px solid var(--line-strong);color:var(--text)!important;background:var(--surface);}
   .btn-ghost:hover{border-color:var(--amber);color:var(--amber-soft)!important;}
-  .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap;}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;}
   .hero-stats .stat b{font-family:'Fraunces',serif;font-size:1.9rem;display:block;color:var(--text);}
-  .hero-stats .stat span{font-size:0.82rem;color:var(--text-faint);}
+  .hero-stats .stat span{font-size:0.82rem;color:var(--text-faint);line-height:1.3;}
 
   .hero-visual{position:relative;}
   .photo-frame{
@@ -137,7 +137,7 @@
   .about-grid{display:grid;grid-template-columns:1.3fr 0.9fr;gap:50px;align-items:start;}
   .about-grid p{color:var(--text-mute);margin:0 0 16px;}
   .about-grid p:last-child{margin-bottom:0;}
-  .fact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+  .fact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-top:54px;}
   .fact-card .fact{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:0.92rem;}
   .fact-card .fact:last-child{border-bottom:none;padding-bottom:0;}
   .fact-card .fact:first-child{padding-top:0;}
@@ -226,6 +226,7 @@
     .hero-grid{grid-template-columns:1fr;}
     .hero-visual{order:-1;max-width:320px;margin:0 auto 56px;}
     .about-grid{grid-template-columns:1fr;}
+    .fact-card{margin-top:0;}
     .skills-grid{grid-template-columns:1fr 1fr;}
     .split-grid{grid-template-columns:1fr;}
     .profiles-row{grid-template-columns:1fr 1fr;}
@@ -237,7 +238,7 @@
     .skills-grid{grid-template-columns:1fr;}
     .profiles-row{grid-template-columns:1fr 1fr;}
     .projects-grid{grid-template-columns:1fr;}
-    .hero-stats{gap:22px;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:20px;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;transition:none!important;}
